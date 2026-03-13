@@ -1,113 +1,65 @@
 # E-Commerce Product Analytics — Mixpanel
 
-A product analytics project built to analyze user behavior, funnel performance, and retention patterns on a simulated e-commerce platform. The analysis was conducted in Mixpanel using a synthetic dataset generated in Python.
+A product analytics project analyzing user behavior, funnel performance, and retention on a simulated e-commerce platform using Mixpanel.
 
 ---
 
-## Overview
+## Project Summary
 
-This project simulates six months of user activity on an e-commerce platform with 3,000 users across seven countries. The goal was to identify where users drop off in the purchase funnel, which acquisition channels bring the highest-quality users, and how retention varies across cohorts.
-
-The findings are presented as an interactive Mixpanel dashboard covering funnel analysis, weekly retention, geographic distribution, and revenue by channel.
+This project uses a synthetic dataset of 2,853 users across 7 countries and 6 product categories to answer core product analytics questions. All analysis and reporting was done in Mixpanel.
 
 ---
 
-## Business Questions
+## Dashboard Reports
 
-- At which step of the purchase funnel do we lose the most users?
-- Which acquisition channel produces the highest conversion rate?
-- How well do we retain users after their first visit?
-- Which product categories and markets drive the most revenue?
+**Today Active Users** — 1,529 unique users active today, up 4,678% compared to the previous day.
 
----
+**Weekly Active Users** — 1,639 unique users active in the past 7 days, up 498% compared to the previous week.
 
-## Dataset
+**Unique Purchases by Product Category** — Tracks monthly purchase trends across 6 categories: Home & Garden, Electronics, Beauty, Books, Sports, and Clothing. Home & Garden and Electronics consistently lead in purchase volume across the 6-month period.
 
-The dataset was synthetically generated using Python to simulate realistic e-commerce behavior. It includes 3,000 users and approximately 17,000 events spanning 12 months.
+**Active Users by Country** — Poland (58), Germany (54), Spain (50), Netherlands (47), France (38), USA (37), UK (35).
 
-**Users table includes:**
-- User ID, acquisition channel, country, device type, age group, preferred category, signup date
+**Retention** — 55.58% of users returned within the first week. Retention drops sharply after week one, stabilizing at a low but consistent level through week 12.
 
-**Events tracked:**
-- User Signed Up
-- Product Viewed
-- Added to Cart
-- Checkout Started
-- Purchase Completed
-- Review Submitted
+**Purchase Conversion Funnel** — 5-step funnel tracked over 12 months:
 
-**Acquisition channels:** Organic, Paid Search, Referral, Social Media, Email
+| Step | Users | Conversion |
+|---|---|---|
+| User Signed Up | 2,853 | 100% |
+| Product Viewed | 1,522 | 53.35% |
+| Added to Cart | 532 | 21.81% |
+| Checkout Started | 107 | 32.23% |
+| Purchase Completed | 52 | 48.6% |
 
-**Countries:** Germany, USA, UK, France, Netherlands, Spain, Poland
-
----
-
-## Tools
-
-- Python (Pandas, NumPy) — data generation and Mixpanel API ingestion
-- Mixpanel — funnel analysis, retention analysis, segmentation, and dashboard
-- Google Colab — development environment
-- GitHub — version control and portfolio hosting
+Overall end-to-end conversion rate: 1.82%
 
 ---
 
 ## Key Findings
 
-**Funnel Analysis**
+The largest drop-off in the funnel occurs between Product Viewed and Added to Cart, where over 78% of browsing users do not add anything to their cart. This is the highest-leverage point for conversion optimization.
 
-The biggest drop-off in the purchase funnel occurs between Product Viewed and Added to Cart, where approximately 77% of users continue but only 23% proceed to add an item to their cart. Overall end-to-end conversion from signup to purchase sits at around 3%.
+Retention falls sharply after the first week, suggesting that re-engagement campaigns in days 3 to 7 post-signup would have the greatest impact on long-term user retention.
 
-**Retention**
-
-Week-one retention stands at approximately 55%, which drops sharply by week two. This indicates that re-engagement in the first seven days is critical and represents the highest-leverage opportunity for improving long-term user value.
-
-**Acquisition Channels**
-
-Referral users convert at a significantly higher rate than other channels, suggesting that referred users arrive with a higher level of trust and intent. Social Media drives volume but underperforms on conversion, pointing to a potential budget reallocation opportunity.
-
-**Geographic Distribution**
-
-Poland, Germany, and Spain represent the three largest user segments in this dataset, which would inform localization and marketing priorities in a real-world scenario.
+Home & Garden and Electronics are the strongest performing categories by purchase volume and show consistent month-over-month growth.
 
 ---
 
-## Dashboard
+## Tools
 
-The Mixpanel dashboard includes the following reports:
-
-- Purchase Conversion Funnel — 5-step funnel from signup to purchase
-- Weekly Cohort Retention — retention curve across 12 weeks
-- Active Users by Country — geographic breakdown of user activity
-- Daily and Weekly Active Users — engagement trends over time
-
-Screenshots of the dashboard are included in the `/screenshots` folder of this repository.
-
----
-
-## Project Structure
-
-```
-ecommerce-product-analytics/
-│
-├── mixpanel_data_generator.ipynb   # Data generation and Mixpanel ingestion
-├── screenshots/                    # Mixpanel dashboard and report screenshots
-│   ├── funnel_analysis.png
-│   ├── retention_chart.png
-│   ├── dashboard_overview.png
-│   └── country_breakdown.png
-├── README.md
-└── LICENSE
-```
+- Python (Pandas, NumPy) — synthetic data generation and Mixpanel API ingestion
+- Mixpanel — funnel analysis, retention analysis, segmentation, and dashboard
+- Google Colab — development environment
 
 ---
 
 ## How to Run
 
 1. Open `mixpanel_data_generator.ipynb` in Google Colab
-2. Run all cells in order
-3. Add your Mixpanel Project Token and API Secret in the credentials cell
-4. Run the final cell to send events to Mixpanel
-5. Open Mixpanel and build reports using the event data
+2. Add your Mixpanel Project Token and API Secret in the credentials cell
+3. Run all cells in order
+4. Open Mixpanel and build reports using the imported event data
 
 ---
 
